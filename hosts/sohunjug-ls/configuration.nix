@@ -1,7 +1,6 @@
 { config, pkgs, ... }: {
   imports = [
     ./hardware.nix
-    <home-manager/nixos>  
   ];
 
   boot.cleanTmpDir = true;
