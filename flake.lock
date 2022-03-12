@@ -1,5 +1,25 @@
 {
   "nodes": {
+    "home-manager": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1646559628,
+        "narHash": "sha256-WDoqxH/IPTV8CkI15wwzvXYgXq9UPr8xd8WKziuaynw=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "afe96e7433c513bf82375d41473c57d1f66b4e68",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1646939531,
@@ -16,9 +36,26 @@
         "type": "github"
       }
     },
+    "nurpkgs": {
+      "locked": {
+        "lastModified": 1647099997,
+        "narHash": "sha256-LtXqknhs4NYAmq3E7yoXQMnnrJweb6qhQs1+1DQac0c=",
+        "owner": "nix-community",
+        "repo": "NUR",
+        "rev": "40657caea83a8692d6a9febf5cc755819f021783",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "NUR",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
-        "nixpkgs": "nixpkgs"
+        "home-manager": "home-manager",
+        "nixpkgs": "nixpkgs",
+        "nurpkgs": "nurpkgs"
       }
     }
   },
