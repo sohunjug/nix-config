@@ -22,12 +22,37 @@
 
   outputs = { self, nixpkgs, home-manager, nurpkgs, ... }@inputs: {
 
-    nixosConfigurations."sohunjug-ls" = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules =
-        [
+    nixosConfigurations = {
+      "sohunjug-ls" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
           ./hosts/sohunjug-ls/configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            #home-manager.users.jdoe = import ./home.nix;
+
+            # Optionally, use home-manager.extraSpecialArgs to pass
+            # arguments to home.nix
+          }
         ];
+      };
+      kkws = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/kkws/configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            #home-manager.users.jdoe = import ./home.nix;
+
+            # Optionally, use home-manager.extraSpecialArgs to pass
+            # arguments to home.nix
+          }
+        ];
+      };
     };
 
     # 新增下面几行

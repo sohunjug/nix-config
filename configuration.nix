@@ -1,7 +1,6 @@
 { config, pkgs, ... }: {
   imports = [
     ./hardware-configuration.nix
-    <home-manager/nixos>  
   ];
 
   boot.cleanTmpDir = true;
@@ -18,7 +17,6 @@
     "--container-runtime-endpoint unix:///run/containerd/containerd.sock"
   ];
   environment.systemPackages = with pkgs; [
-    k3s
     git
     neovim
   ];
@@ -35,9 +33,5 @@
       experimental-features = nix-command flakes
     '';
     settings.substituters = [ "https://mirrors.ustc.edu.cn/nix-channels/store" "https://cache.nixos.org/" ];
-  };
-  home-manager.users.sohunjug = { pkgs, ... }: {
-    home.packages = [ pkgs.atool pkgs.httpie pkgs.vim ];
-    programs.bash.enable = true;
   };
 }

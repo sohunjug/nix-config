@@ -13,12 +13,12 @@
   services.k3s.enable = true;
   services.k3s.role = "server";
   services.k3s.extraFlags = toString [
-    # "--kubelet-arg=v=4" # Optionally add additional args to k3s
     "--container-runtime-endpoint unix:///run/containerd/containerd.sock"
   ];
   environment.systemPackages = with pkgs; [
     k3s
     git
+    vim
     neovim
   ];
   users.users.sohunjug.isNormalUser = true;
@@ -34,9 +34,5 @@
       experimental-features = nix-command flakes
     '';
     settings.substituters = [ "https://mirrors.ustc.edu.cn/nix-channels/store" "https://cache.nixos.org/" ];
-  };
-  home-manager.users.sohunjug = { pkgs, ... }: {
-    home.packages = [ pkgs.atool pkgs.httpie pkgs.vim ];
-    programs.bash.enable = true;
   };
 }
