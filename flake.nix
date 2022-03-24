@@ -23,6 +23,21 @@
   outputs = { self, nixpkgs, home-manager, nurpkgs, ... }@inputs: {
 
     nixosConfigurations = {
+      "cta-cn-1" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/cta-cn-1/configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            #home-manager.users.jdoe = import ./home.nix;
+
+            # Optionally, use home-manager.extraSpecialArgs to pass
+            # arguments to home.nix
+          }
+        ];
+      };
       "sohunjug-ls" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
