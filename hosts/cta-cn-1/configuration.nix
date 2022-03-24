@@ -13,7 +13,7 @@
   security.pam.services.sudo.sshAgentAuth = true;
   services.openssh.passwordAuthentication = true;
   services.openssh.permitRootLogin = "yes";
-  services.openssh.challengeResponseAuthentication = false;
+  services.openssh.kbdInteractiveAuthentication = false;
 
   services.openssh.authorizedKeysFiles = [".ssh/authorized_keys"];
   environment.systemPackages = with pkgs; [
