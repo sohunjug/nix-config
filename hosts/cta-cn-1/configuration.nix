@@ -14,14 +14,15 @@
   services.openssh.passwordAuthentication = true;
   services.openssh.permitRootLogin = "yes";
   services.openssh.kbdInteractiveAuthentication = false;
+  services.openssh.logLevel = "DEBUG3";
   services.openssh.extraConfig = ''
-    LogLevel DEBUG
     SyslogFacility AUTH
   '';
 
   services.openssh.authorizedKeysFiles = [".ssh/authorized_keys"];
   environment.systemPackages = with pkgs; [
     git
+    vim
     neovim
   ];
 
